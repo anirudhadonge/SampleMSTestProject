@@ -12,6 +12,8 @@ namespace SampleMSTestProject.Utilities
     {
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        public static object AuthToken { get; private set; }
+
         public static IRestRequest GetRestRequest(string endPointUrl, Method method, string authToken, string apiKey, string messageID, object objBody, string sessionId="null",string clientBatchId = null)
         {
             IRestRequest restRequest = new RestRequest(endPointUrl, method);
@@ -42,7 +44,8 @@ namespace SampleMSTestProject.Utilities
             request.AddParameter("grant_type", "client_credentials", ParameterType.GetOrPost);
             request.AddParameter("Client_id", "AuthClientID", ParameterType.GetOrPost);
             request.AddParameter("Client_secret", "AuthSecretKey", ParameterType.GetOrPost);
-            GetOAuthToken authToken = Utility
+            Object authToken = UtilityLibrary.GetDeSerializedObject<object>(client.Execute(request).Content);
+            return authToken.ToString();
         }
     }
 }
