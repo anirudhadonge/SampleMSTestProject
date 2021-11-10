@@ -51,6 +51,7 @@ namespace SampleMSTestProject.Utilities
                         xmlString = stringWriter.ToString();
                     }
                 }
+                return xmlString;
             }catch (Exception ex)
             {
                 return ex.Message;
