@@ -20,7 +20,7 @@ namespace SampleMSTestProject.Utilities
                 Screenshot screenshot =takeScreenShot.GetScreenshot();
                 string workingDirectory = CreatedScreenshotDirectory();
                 string screenShotName = "ScreenShot_" + DateTime.Now.ToFileTime();
-                string finalPath =workingDirectory+"\\"+screenShotName+."png";
+                string finalPath =workingDirectory+"\\"+screenShotName+".png";
                 string localPath = new Uri(finalPath).LocalPath;
                 screenshot.SaveAsFile(finalPath);
                 log.Info("ScreenShot Path:" + localPath);

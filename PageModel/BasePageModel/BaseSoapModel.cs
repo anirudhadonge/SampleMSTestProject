@@ -46,7 +46,7 @@ namespace SampleMSTestProject.PageModel.BasePageModel
                 string responseCode = ResponseString.Split('~')[0];
                 ResponseString = ResponseString.Split('~')[1];
 
-                if (responseCode.Equals("Success"){
+                if (responseCode.Equals("Success")){
                     LogPassXMLBlock(log, "Send Request Action is Successfull", ResponseString);
                 }
                 else
@@ -70,9 +70,4 @@ namespace SampleMSTestProject.PageModel.BasePageModel
             LogInfo(log, string.Format("Request Complete, Request: {0}, Response: {2}", JsonConvert.SerializeObject(SoapRequest, Formatting.Indented), JsonConvert.SerializeObject(SoapResponse, Formatting.Indented)));
         }
     }
-
-
-
-
-}
 }

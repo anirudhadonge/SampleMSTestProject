@@ -8,11 +8,11 @@ using System.Text.RegularExpressions;
 
 namespace SampleMSTestProject.Utilities
 {
-    public class SoftAssert:BaseModel
+    public class SoftAssert : BaseLoggerLib
     {
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public SoftAssert(BaseTestContext baseTestContext)
+        public SoftAssert(BaseTestContext baseTextContext) : base(baseTextContext)
         {
             FailedAssertList = new List<string>();
             PassedAssertList = new List<string>();
@@ -30,7 +30,8 @@ namespace SampleMSTestProject.Utilities
             {
                 Assert.AreEqual(expectedValue, actualValue);
                 PassedAssertList.Add(assertString);
-            }catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 log.Error(exception.ToString());
                 FailedAssertList.Add(assertString);
@@ -67,7 +68,7 @@ namespace SampleMSTestProject.Utilities
             }
         }
 
-        public void IsEmpty(string key,  object actualValue)
+        public void IsEmpty(string key, object actualValue)
         {
             string assertString = GetAssertMessage(key, "Empty", actualValue.ToString());
             try
@@ -82,7 +83,7 @@ namespace SampleMSTestProject.Utilities
             }
         }
 
-        public void IsTrue(string key, , bool condition)
+        public void IsTrue(string key, bool condition)
         {
             string assertString = GetAssertMessage(key, "true", condition.ToString());
             try
@@ -97,7 +98,7 @@ namespace SampleMSTestProject.Utilities
             }
         }
 
-        public void IsFalse(string key, , bool condition)
+        public void IsFalse(string key, bool condition)
         {
             string assertString = GetAssertMessage(key, "false", condition.ToString());
             try
@@ -117,8 +118,9 @@ namespace SampleMSTestProject.Utilities
             string assertString = GetAssertMessage(key, expectedValue.ToString(), actualValue.ToString());
             try
             {
-                if (Regex.IsMatch(actualValue.ToString(), expectedValue.ToString()){ 
-                PassedAssertList.Add(assertString);
+                if (Regex.IsMatch(actualValue.ToString(), expectedValue.ToString()))
+                {
+                    PassedAssertList.Add(assertString);
                 }
                 else
                 {
@@ -156,7 +158,8 @@ namespace SampleMSTestProject.Utilities
             {
                 Assert.IsTrue(actualValue == DBNull.Value);
                 PassedAssertList.Add(assertString);
-            }catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 log.Error(exception.ToString());
                 FailedAssertList.Add(assertString);
@@ -177,7 +180,7 @@ namespace SampleMSTestProject.Utilities
 
         public void AssertAll()
         {
-            LogPassMessage(log, GetListString(PassedAssertList));
+            LogSuccessMessage(log, GetListString(PassedAssertList));
             Assert.IsTrue(FailedAssertList.Count == 0, "<br>\n" + GetListString(FailedAssertList) + "<br>\n");
         }
 

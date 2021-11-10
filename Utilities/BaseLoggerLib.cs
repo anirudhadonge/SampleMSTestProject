@@ -87,7 +87,7 @@ namespace SampleMSTestProject.Utilities
         {
             log.Info(message + xmlString);
             BaseTestContext.ExtentTest.Info(message);
-            BaseTestContext.ExtentTest.Info(MarkupHelper.CreateCodeBlock(xmlString, CodeLanguage.xml);
+            BaseTestContext.ExtentTest.Info(MarkupHelper.CreateCodeBlock(xmlString, CodeLanguage.Xml));
             BaseTestContext.TestContext.WriteLine(message + xmlString);
         }
 
@@ -95,7 +95,7 @@ namespace SampleMSTestProject.Utilities
         {
             log.Info(message + xmlString);
             BaseTestContext.ExtentTest.Pass(message);
-            BaseTestContext.ExtentTest.Pass(MarkupHelper.CreateCodeBlock(xmlString, CodeLanguage.xml);
+            BaseTestContext.ExtentTest.Pass(MarkupHelper.CreateCodeBlock(xmlString, CodeLanguage.Xml));
             BaseTestContext.TestContext.WriteLine(message + xmlString);
         }
 
@@ -103,7 +103,7 @@ namespace SampleMSTestProject.Utilities
         {
             log.Info(message + xmlString);
             BaseTestContext.ExtentTest.Fail(message);
-            BaseTestContext.ExtentTest.Fail(MarkupHelper.CreateCodeBlock(xmlString, CodeLanguage.xml);
+            BaseTestContext.ExtentTest.Fail(MarkupHelper.CreateCodeBlock(xmlString, CodeLanguage.Xml));
             BaseTestContext.TestContext.WriteLine(message + xmlString);
         }
 

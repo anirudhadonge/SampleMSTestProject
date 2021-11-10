@@ -35,7 +35,7 @@ namespace SampleMSTestProject.PageModel.BasePageModel
             }
             catch (Exception exception)
             {
-                LogError(log, " Element found using the identifier :" + objectIdentifier);
+                LogError(log, " Element found using the identifier :" + objectIdentifier + exception.ToString());
             }
             return false;
         }
@@ -86,7 +86,7 @@ namespace SampleMSTestProject.PageModel.BasePageModel
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
             IWebElement iElement = BaseTestContext.Driver.FindElement(element);
             Actions actions = new Actions(driver);
-            actions.MoveToElement(iElement).Click().Perform().Build().;
+            actions.MoveToElement(iElement).Click().Build().Perform();
 
         }
 
@@ -116,7 +116,7 @@ namespace SampleMSTestProject.PageModel.BasePageModel
 
         public string GetElementText(By element)
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(element);
+            wait.Until(ExpectedConditions.ElementIsVisible(element));
             return BaseTestContext.Driver.FindElement(element).Text.Trim();
         }
 

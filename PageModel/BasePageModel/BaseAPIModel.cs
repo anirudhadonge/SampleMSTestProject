@@ -113,7 +113,7 @@ namespace SampleMSTestProject.PageModel.BasePageModel
                 errorMessage = response.ErrorMessage
             };
 
-            LogInfo(log, string.Format("Request completed, Request: {0}, Response:{1}", UtilityLibrary.GetSerializedString(requestToLog), UtilityLibrary.GetSerializedString(responseToLog))
+            LogInfo(log, string.Format("Request completed, Request: {0}, Response:{1}", UtilityLibrary.GetSerializedString(requestToLog), UtilityLibrary.GetSerializedString(responseToLog)));
 
         }
 
