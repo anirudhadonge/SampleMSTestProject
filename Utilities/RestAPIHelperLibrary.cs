@@ -36,6 +36,44 @@ namespace SampleMSTestProject.Utilities
             return restClient.Post(restRequest);
         }
 
+        public static IRestResponse DeleteRequest(IRestRequest restRequest)
+        {
+            IRestClient restClient = new RestClient();
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+            return restClient.Delete(restRequest);
+        }
+
+        public static IRestResponse PutRequest(IRestRequest restRequest)
+        {
+            IRestClient restClient = new RestClient();
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+            return restClient.Put  (restRequest);
+        }
+
+        public static IRestResponse GetRequest(IRestRequest restRequest)
+        {
+            IRestClient restClient = new RestClient();
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+            return restClient.Get(restRequest);
+        }
+
+
+        public static IRestResponse GetRestResponse(IRestRequest restRequest,Method method)
+        {
+            switch (method)
+            {
+                case Method.POST:
+                    return PostRequest(restRequest);
+                case Method.GET:
+                    return GetRequest(restRequest);
+                case Method.PUT:
+                    return PutRequest(restRequest);
+                case Method.DELETE:
+                    return DeleteRequest(restRequest);
+
+            }
+            return null;
+        }
 
         public static string GetOAuthToken(string environment)
         {
